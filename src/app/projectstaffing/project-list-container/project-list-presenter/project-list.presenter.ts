@@ -51,7 +51,7 @@ export class ProjectListPresenter {
     let ref=overlayRef.attach(new ComponentPortal(ProjectFormPresentation, this.viewContainerRef,
       this.createInjector(projectDetails, overlayRef)));
 
-    alert("project list ts"+JSON.stringify(ref.instance.projectForm.value));
+    // alert("project list ts"+JSON.stringify(ref.instance.projectForm.value));
 
     ref.instance.addProject.subscribe((formData: Project) => {
       if (formData) {

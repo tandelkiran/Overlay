@@ -16,6 +16,8 @@ export class ProjectListPresentation implements OnInit {
 
   pData: any;
 
+  // @Input() projectData;
+
   @Input() set projectData(value: Project[]) {
     if (value) {
       this.project = value;

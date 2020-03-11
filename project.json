@@ -1,14 +1,34 @@
 {
-    "projects":[
-        {
-            "id":1,
-            "projectName":"Abc",
-            "subProjectName":"aaa",
-            "clientName":"abhinav",
-            "duration":"3 months",
-            "estimatedHours":"5 hours",
-            "projectValue":50000,
-            "hoursApprover":"abab"
-        }
-    ]
+  "projects": [
+    {
+      "id": 1,
+      "projectName": "Abc",
+      "subProjectName": "aaa",
+      "clientName": "abhinav",
+      "duration": "3 months",
+      "estimatedHours": "5 hours",
+      "projectValue": 50000,
+      "hoursApprover": "abab"
+    },
+    {
+      "projectName": "ghj",
+      "subProjectName": "jhg",
+      "clientName": "jhjgh",
+      "duration": "ghj",
+      "estimatedHours": "jht",
+      "projectValue": "try",
+      "hoursApprover": "rewre",
+      "id": 2
+    },
+    {
+      "projectName": "sdf",
+      "subProjectName": "sdf",
+      "clientName": "sdf",
+      "duration": "sfdf",
+      "estimatedHours": "sdf",
+      "projectValue": "sdf",
+      "hoursApprover": "dfs",
+      "id": 3
+    }
+  ]
 }
