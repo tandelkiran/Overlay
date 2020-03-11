@@ -1,0 +1,41 @@
+<div class="overflow-auto" style="background-color: skyblue;height: 500px;width: 300px;" >
+    <h3>Create Project</h3>
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="projectName">Project Name</label>
+            <input type="email" formControlName="projectName" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="project name">
+        </div>
+        <div class="form-group">
+            <label for="subProjectName">Sub Project Name</label>
+            <input type="text" formControlName="subProjectName" class="form-control" id="exampleInputPassword1"
+                placeholder="sub project name">
+        </div>
+        <div class="form-group">
+            <label for="clientName">Client Name</label>
+            <input type="text" formControlName="clientName" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="client name">
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration</label>
+            <input type="text" formControlName="duration" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="duration">
+        </div>
+        <div class="form-group">
+            <label for="estimatedHours">Estimated Hours</label>
+            <input type="text" formControlName="estimatedHours" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="estimated hours">
+        </div>
+        <div class="form-group">
+            <label for="projectValue">Project Value</label>
+            <input type="text" formControlName="projectValue" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="project value">
+        </div>
+        <div class="form-group">
+            <label for="hoursApprover">Hours Approver</label>
+            <input type="text" formControlName="hoursApprover" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="hours approver">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
