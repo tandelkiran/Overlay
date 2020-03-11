@@ -51,7 +51,7 @@ export class ProjectListPresenter {
 
     alert("project list ts"+JSON.stringify(ref.instance.projectForm.value));
 
-    ref.instance.updatedProject.subscribe((formData) => {
+    ref.instance.projectForm.subscribe((formData) => {
       debugger
       alert("FORMDATA:"+JSON.stringify(formData));
       this.formDetails.next(formData);

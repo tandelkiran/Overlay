@@ -4,7 +4,7 @@ import { Project } from 'src/app/projectstaffing/models/project';
 @Injectable()
 export class ProjectFormPresenter {
 
-  projectForm: FormGroup;
+  projectForm: any;
   projectData:Project;
 
   constructor(

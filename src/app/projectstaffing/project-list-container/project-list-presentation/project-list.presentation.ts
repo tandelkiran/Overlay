@@ -5,7 +5,7 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ProjectFormPresentation } from './project-form-presentation/project-form.presentation';
 import { Project } from '../../models/project';
-import { Observable,Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 @Component({
   selector: 'app-project-list-presentation-ui',
   templateUrl: './project-list.presentation.html',
@@ -15,11 +15,21 @@ import { Observable,Subject } from 'rxjs';
 export class ProjectListPresentation implements OnInit {
 
   pData: any;
-  
-  @Input() projectData;
+
+  @Input() set documentData(value: Project[]) {
+    if (value) {
+      this.project = value;
+    }
+  }
+  get documentData() {
+    return this.project;
+  }
 
   @Output() public addProject: EventEmitter<Project>;
   @Output() public updatedProject: EventEmitter<any>;
+
+  private project: Project[];
+
   constructor(
     public overlay: Overlay,
     public viewContainerRef: ViewContainerRef,
@@ -32,7 +42,7 @@ export class ProjectListPresentation implements OnInit {
   ngOnInit() {
   }
 
-  create(project:Project) {
+  create(project: Project) {
     debugger
     this.projectListPresenter.createProjectForm(project).subscribe((data: any) => {
       debugger
