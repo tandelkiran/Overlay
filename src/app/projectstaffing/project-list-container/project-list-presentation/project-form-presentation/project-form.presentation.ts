@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Inject } from '@angular/core';
 import { ProjectFormPresenter } from '../project-form-presenter/project-form.presenter';
 import { FormGroup } from '@angular/forms';
+import { Project } from 'src/app/projectstaffing/models/project';
+import { PROJECT_DETAILS } from 'src/app/projectstaffing/token';
+import { OverlayRef } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-project-form-presentation-ui',
@@ -10,24 +13,26 @@ import { FormGroup } from '@angular/forms';
 })
 export class ProjectFormPresentation implements OnInit {
 
+  @Output() public addProject: EventEmitter<Project>;
+  
   projectForm:FormGroup;
 
   constructor(
+    @Inject(PROJECT_DETAILS) public project: any,
+    public overlayRef: OverlayRef,
     private projectFormPresenter:ProjectFormPresenter
-  ) { }
+  ) {
+    this.addProject = new EventEmitter<Project>();
+   }
 
   ngOnInit() {
     this.projectForm=this.projectFormPresenter.buildForm();
   }
 
-  // onSubmit()
-  // {
-  //   this.projectFormPresenter.createProject();
-  //   // alert(JSON.stringify(this.projectForm.value));
-  // }
   public onSubmit(): void {
+    debugger
     this.overlayRef.dispose();
-    this.updatedDocument.emit(this.documentFormDetails.value);
+    this.addProject.emit(this.projectForm.value);
   }
 
 }

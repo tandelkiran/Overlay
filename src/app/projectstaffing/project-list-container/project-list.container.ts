@@ -17,7 +17,7 @@ export class ProjectListContainer implements OnInit {
   ngOnInit() {
   }
 
-  addPRJ(prj:Project) {
+  public addPRJ(prj:Project):void {
     debugger
     this.projectstaffingService.addProject(prj).subscribe(data=>
       {

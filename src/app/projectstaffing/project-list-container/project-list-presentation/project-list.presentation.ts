@@ -16,27 +16,28 @@ export class ProjectListPresentation implements OnInit {
 
   pData: any;
 
-  @Input() set documentData(value: Project[]) {
+  @Input() set projectData(value: Project[]) {
     if (value) {
       this.project = value;
     }
   }
-  get documentData() {
+  get projectData() {
     return this.project;
   }
 
   @Output() public addProject: EventEmitter<Project>;
-  @Output() public updatedProject: EventEmitter<any>;
+  // @Output() public updatedProject: EventEmitter<any>;
 
   private project: Project[];
+  private updatedDetails: Project;
 
   constructor(
     public overlay: Overlay,
     public viewContainerRef: ViewContainerRef,
     private projectListPresenter: ProjectListPresenter
   ) {
-    this.addProject = new EventEmitter<Project>();
-    this.updatedProject = new EventEmitter();
+    this.addProject = new EventEmitter();
+    // this.updatedProject = new EventEmitter();
   }
 
   ngOnInit() {
@@ -44,10 +45,14 @@ export class ProjectListPresentation implements OnInit {
 
   create(project: Project) {
     debugger
-    this.projectListPresenter.createProjectForm(project).subscribe((data: any) => {
+
+    this.projectListPresenter.createProjectForm(project);
+
+    this.projectListPresenter.addFormDetails.subscribe((data:any)=>
+    {
       debugger
-      this.pData = data;
-      this.addProject.emit(this.pData);
+      this.updatedDetails=data;
+      this.addProject.emit(this.updatedDetails);
     });
   }
 

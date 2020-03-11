@@ -10,14 +10,15 @@ import { Project } from '../../models/project';
 @Injectable()
 export class ProjectListPresenter {
 
-  public formDetails:Subject<Project>;
+  public addFormDetails:Subject<Project>;
 
   constructor(
     private overlay: Overlay,
     private viewContainerRef:ViewContainerRef,
     private injector: Injector
-  ) { 
-    this.formDetails= new Subject<Project>();
+  ) 
+  { 
+    this.addFormDetails= new Subject<Project>();
   }
 
   private createInjector(projectDetails: Project, overlayRef: OverlayRef): PortalInjector {
@@ -30,6 +31,7 @@ export class ProjectListPresenter {
   createProjectForm(projectDetails: any) {
     debugger
     this.viewContainerRef.clear();
+
     let config = new OverlayConfig();
 
     config.positionStrategy = this.overlay.position()
@@ -51,13 +53,15 @@ export class ProjectListPresenter {
 
     alert("project list ts"+JSON.stringify(ref.instance.projectForm.value));
 
-    ref.instance.projectForm.subscribe((formData) => {
-      debugger
+    ref.instance.addProject.subscribe((formData: Project) => {
+      if (formData) {
+        debugger
       alert("FORMDATA:"+JSON.stringify(formData));
-      this.formDetails.next(formData);
-    });
+        this.addFormDetails.next(formData);
+      }
+    })
 
-    return this.formDetails.asObservable();
+    return this.addFormDetails.asObservable();
 
     // return ref.instance.projectForm.value;
     // return overlayRef;
