@@ -1,10 +1,11 @@
 export class Project {
-    id: number;
-    projectName: string;
-    subProjectName: string;
-    clientName: string;
-    duration: string;
-    estimatedHours: string;
-    projectValue: number;
-    hoursApprover: string;
+    public id: number;
+    public projectName: string;
+    public subProjectName: string;
+    public clientName: string;
+    public projectStartDate: Date;
+    public projectEndDate: Date;
+    public estimatedHours: number;
+    public projectValue: number;
+    public projectManagerName: string;
 }

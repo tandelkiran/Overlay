@@ -1,6 +1,10 @@
-<div class="overflow-auto" style="background-color: skyblue;height: 500px;width: 300px;" >
+<div class="overflow-auto" style="background-color: skyblue;height: 500px;width: 300px;">
     <h3>Create Project</h3>
     <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <input type="hidden" formControlName="id" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+        </div>
         <div class="form-group">
             <label for="projectName">Project Name</label>
             <input type="email" formControlName="projectName" class="form-control" id="exampleInputEmail1"
@@ -17,23 +21,28 @@
                 aria-describedby="emailHelp" placeholder="client name">
         </div>
         <div class="form-group">
-            <label for="duration">Duration</label>
-            <input type="text" formControlName="duration" class="form-control" id="exampleInputEmail1"
-                aria-describedby="emailHelp" placeholder="duration">
+            <label for="duration">Start Date</label>
+            <input type="date" formControlName="projectStartDate" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="start date">
+        </div>
+        <div class="form-group">
+            <label for="duration">End Date</label>
+            <input type="date" formControlName="projectEndDate" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="end date">
         </div>
         <div class="form-group">
             <label for="estimatedHours">Estimated Hours</label>
-            <input type="text" formControlName="estimatedHours" class="form-control" id="exampleInputEmail1"
+            <input type="number" formControlName="estimatedHours" class="form-control" id="exampleInputEmail1"
                 aria-describedby="emailHelp" placeholder="estimated hours">
         </div>
         <div class="form-group">
             <label for="projectValue">Project Value</label>
-            <input type="text" formControlName="projectValue" class="form-control" id="exampleInputEmail1"
+            <input type="number" formControlName="projectValue" class="form-control" id="exampleInputEmail1"
                 aria-describedby="emailHelp" placeholder="project value">
         </div>
         <div class="form-group">
             <label for="hoursApprover">Hours Approver</label>
-            <input type="text" formControlName="hoursApprover" class="form-control" id="exampleInputEmail1"
+            <input type="text" formControlName="projectManagerName" class="form-control" id="exampleInputEmail1"
                 aria-describedby="emailHelp" placeholder="hours approver">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>

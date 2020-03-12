@@ -14,8 +14,6 @@ import { Observable, Subject } from 'rxjs';
 })
 export class ProjectListPresentation implements OnInit {
 
-  pData: any;
-
   // @Input() projectData;
 
   @Input() set projectData(value: Project[]) {
@@ -27,8 +25,12 @@ export class ProjectListPresentation implements OnInit {
     return this.project;
   }
 
+
+
+  // @Input() getProject;
+
   @Output() public addProject: EventEmitter<Project>;
-  // @Output() public updatedProject: EventEmitter<any>;
+  @Output() public updateProject: EventEmitter<any>;
 
   private project: Project[];
   private updatedDetails: Project;
@@ -39,23 +41,34 @@ export class ProjectListPresentation implements OnInit {
     private projectListPresenter: ProjectListPresenter
   ) {
     this.addProject = new EventEmitter();
-    // this.updatedProject = new EventEmitter();
+    this.updateProject = new EventEmitter();
   }
 
   ngOnInit() {
   }
 
-  create(project: Project) {
+  loadProjectForm(project: Project) {
     debugger
-
+    let flag = 0;
     this.projectListPresenter.createProjectForm(project);
 
-    this.projectListPresenter.addFormDetails.subscribe((data:any)=>
-    {
+
+    this.projectListPresenter.addFormDetails.subscribe((data: any) => {
       debugger
-      this.updatedDetails=data;
-      this.addProject.emit(this.updatedDetails);
+      if (flag == 0) {
+        flag = 1;
+        this.updatedDetails = data;
+        this.addProject.emit(this.updatedDetails);
+      }
+    });
+
+    this.projectListPresenter.updateFormDetails.subscribe((data: any) => {
+      debugger
+      if (flag == 0) {
+        flag = 1;
+        this.updatedDetails = data;
+        this.updateProject.emit(this.updatedDetails);
+      }
     });
   }
-
 }

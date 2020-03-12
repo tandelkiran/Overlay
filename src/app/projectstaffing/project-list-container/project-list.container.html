@@ -1,1 +1,2 @@
-<app-project-list-presentation-ui [projectData]="projectData | async" (addProject)="addPRJ($event)"></app-project-list-presentation-ui>
+<app-project-list-presentation-ui [projectData]="projectData$ | async" (addProject)="addPRJ($event)" (updateProject)="updateProject($event)" (sendId)="getPrjById($event)">
+</app-project-list-presentation-ui>

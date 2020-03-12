@@ -1,28 +1,31 @@
-<Button (click)="create(null)">Create Project</Button>
+<Button (click)="loadProjectForm(null)">Create Project</Button>
 <table class="table table-hover table-dark">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Project Name</th>
-        <th scope="col">SubProject Name</th>
-        <th scope="col">Client Name</th>
-        <th scope="col">duration</th>
-        <th scope="col">estimatedHours</th>
-        <th scope="col">ProjectValue</th>
-        <th scope="col">Hours Approver</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Project Name</th>
+      <th scope="col">SubProject Name</th>
+      <th scope="col">Client Name</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">End Date</th>
+      <th scope="col">Estimated Hours</th>
+      <th scope="col">Project Value</th>
+      <th scope="col">Project Manager</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let project of projectData;let i=index">
+      <th scope="row">{{project.id}}</th>
+      <td>{{project.projectName}}</td>
+      <td>{{project.subProjectName}}</td>
+      <td>{{project.clientName}}</td>
+      <td>{{project.projectStartDate}}</td>
+      <td>{{project.projectEndDate}}</td>
+      <td>{{project.estimatedHours}}</td>
+      <td>{{project.projectValue}}</td>
+      <td>{{project.projectManagerName}}</td>
+      <td><a style="cursor: pointer" (click)="loadProjectForm(projectData[i])">edit</a></td>
+    </tr>
+  </tbody>
+</table>

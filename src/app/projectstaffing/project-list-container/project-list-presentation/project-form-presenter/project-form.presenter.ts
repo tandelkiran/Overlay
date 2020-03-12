@@ -14,13 +14,15 @@ export class ProjectFormPresenter {
   public buildForm(): FormGroup {
     return this.projectForm = this.formBuilder.group(
       {
+        id:[''],
         projectName: [''],
         subProjectName: [''],
         clientName: [''],
-        duration: [''],
+        projectStartDate: [''],
+        projectEndDate: [''],
         estimatedHours: [''],
         projectValue: [''],
-        hoursApprover: ['']
+        projectManagerName: ['']
       });
   }
 

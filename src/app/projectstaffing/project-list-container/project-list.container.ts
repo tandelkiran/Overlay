@@ -11,20 +11,38 @@ import { Project } from '../models/project';
 })
 export class ProjectListContainer implements OnInit {
 
-  projectData:Observable<Project>;
-  constructor(private projectstaffingService : ProjectstaffingService) { }
+  projectData$: Observable<any>;
+  // getProject:Observable<any>;
+
+  constructor(private projectstaffingService: ProjectstaffingService) { }
 
   ngOnInit() {
+    this.getProjects();
   }
 
-  public addPRJ(prj:Project):void {
+  public getProjects(): void {
+    this.projectData$ = this.projectstaffingService.getProjects();
+  }
+
+  public addPRJ(prj: Project): void {
     debugger
-    this.projectstaffingService.addProject(prj).subscribe(data=>
-      {
+    this.projectstaffingService.addProject(prj).subscribe(data => {
+      debugger
+      if (data) {
+        alert("Inserted");
+        this.getProjects();
+      }
+    });
+  }
+
+  public updateProject(projectDetails: Project): void {
+    debugger
+    this.projectstaffingService.editProjectData(projectDetails, projectDetails.id).subscribe(data => {
+      if (data) {
         debugger
-        if(data){
-            alert("Inserted");
-        }
-      });
+        alert("In Update");
+        this.getProjects();
+      }
+    });
   }
 }
